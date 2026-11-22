@@ -2,6 +2,8 @@
 six_times_streak.py
 A small script which calculates the probability of throwing heads or tails 6 times in a row in a series of 100 throws. 
 """
+import random
+
 
 no_of_streaks = 0
 for experiment_number in range(10000):
