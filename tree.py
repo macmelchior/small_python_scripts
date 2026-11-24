@@ -17,7 +17,7 @@ tree = [
     [".", ".", ".", ".", ".", "X", " ", "S"],
 ]
 
-for x in range(len(grid[0])):
-    for y in range(len(grid)):
-        print(grid[y][x], end="")
+for x in range(len(tree[0])):
+    for y in range(len(tree)):
+        print(tree[y][x], end="")
     print()
