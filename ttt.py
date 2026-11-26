@@ -14,14 +14,12 @@ Alternate turns in a game loop
 Tie it together in main()
 '''
 
-# Grid coordinates, 1 is top left, 9 is bottom right
-COORDINATES = [1, 2, 3, 4, 5, 6, 7, 8, 9]
-X = "✕"
-O = "○"
+X = "X"
+O = "O"
 BLANK = " "
 
 def main():
-    board = create_empty_board(COORDINATES)
+    board = create_empty_board()
     current_player, next_player = X, O
     print(get_board_string(board))
 
@@ -33,28 +31,29 @@ def main():
 
 
 
-def create_empty_board(coordinates):
+def create_empty_board():
     board = {}
-    for coord in coordinates:
+    for coord in ["1a", "1b", "1c", "2a", "2b", "2c", "3a", "3b", "3c"]:
         board[coord] = BLANK
     return board
 
 def get_board_string(board):
     return f"""
-+-----------+
-| {board[1]} | {board[2]} | {board[3]} |
-+---+---+---+
-| {board[4]} | {board[5]} | {board[6]} |
-+---+---+---+
-| {board[7]} | {board[8]} | {board[9]} |
-+-----------+
+     a   b   c
+    ___ ___ ___
+ 1 | {board["1a"]} | {board["1b"]} | {board["1c"]} |
+   +———+———+———+
+ 2 | {board["2a"]} | {board["2b"]} | {board["2c"]} |
+   +———+———+———+
+ 3 | {board["3a"]} | {board["3b"]} | {board["3c"]} |
+    ‾‾‾ ‾‾‾ ‾‾‾
 """
 
 def get_player_move(player, board):
     valid = False
     while not valid:
-        move = int(input(f"What will {player} do? (1-9)"))
-        if move in COORDINATES and board[move] == " ":
+        move = input(f"What will {player} do? (1-9) ")
+        if move in board.keys() and board[move] == " ":
             valid = True
     return move
 
