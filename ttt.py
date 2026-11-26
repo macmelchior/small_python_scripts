@@ -3,17 +3,6 @@ ttt.py
 My version of tic-tac-toe game.
 """
 
-'''
-Represent the board
-Display the board
-Check whether a move is valid
-Place a move on the board
-Detect a winner
-Detect a tie
-Alternate turns in a game loop
-Tie it together in main()
-'''
-
 X = "X"
 O = "O"
 BLANK = " "
@@ -29,6 +18,9 @@ def main():
         print(get_board_string(board))
         if check_win(board, current_player):
             print(f"Player {current_player} won!")
+            break
+        if check_draw(board):
+            print("It's a draw!")
             break
         current_player, next_player = next_player, current_player
 
@@ -83,5 +75,12 @@ def check_win(board, player):
         if combination == [player, player, player]:
             win = True
     return win
+
+def check_draw(board):
+    count = 0
+    for field in board.values():
+        if field != " ":
+            count += 1
+    return count == 9
 
 main()
